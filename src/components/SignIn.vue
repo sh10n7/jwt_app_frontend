@@ -25,6 +25,13 @@ export default{
       try {
         const credentialUser = await signInWithEmailAndPassword(auth, email.value, password.value)
         currentUser.value = credentialUser.user;
+
+        // Json web tokenの取得
+        const token = await credentialUser.user.getIdToken();
+
+        // 取得したtokenをlocalStorageに保存する
+        localStorage.setItem('jwt', token);
+
         router.push("/top");
       }catch(error) {
         console.log('ログインできませんでした',error)

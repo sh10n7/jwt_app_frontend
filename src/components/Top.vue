@@ -49,6 +49,8 @@ export default {
 
     const handleSignOut = async () => {
       await signOut(auth);
+      // サインアウトしたらjwtをremoveする
+      localStorage.removeItem ('jwt');
       router.push("/");
     };
     return { handleSignOut, onAuthStateChanged }

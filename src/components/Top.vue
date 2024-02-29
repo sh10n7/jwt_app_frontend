@@ -1,7 +1,7 @@
 <template>
   <div>
     <button @click="handleSignOut">ログアウト</button>
-    <button>マイページ</button>
+    <button><router-link to="/mypage">マイページ</router-link></button>
   </div>
   <div>
     <form>

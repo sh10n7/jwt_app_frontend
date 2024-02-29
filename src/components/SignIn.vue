@@ -27,7 +27,7 @@ export default{
         currentUser.value = credentialUser.user;
 
         // Json web tokenの取得
-        const token = credentialUser.user.getIdToken();
+        const token = await credentialUser.user.getIdToken();
 
         // 取得したtokenをlocalStorageに保存する
         localStorage.setItem('jwt', token);

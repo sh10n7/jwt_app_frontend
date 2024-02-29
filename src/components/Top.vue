@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button>ログアウト</button>
+    <button @click="handleSignOut">ログアウト</button>
     <button>マイページ</button>
   </div>
   <div>
@@ -20,6 +20,9 @@
 </template>
 
 <script>
+import { auth, signOut, onAuthStateChanged } from '../firebase';
+import { useRouter } from 'vue-router';
+import { ref, onMounted } from 'vue';
 import ShowList from './ShowList.vue';
 
 export default {
@@ -27,6 +30,29 @@ export default {
   components: {
     ShowList
   },
+  setup() {
+    const currentUser = ref(null);
+    const router = useRouter();
+    
+
+    onMounted(() => {
+      //現在ログイン中のユーザーを取得するための処理。
+      auth.onAuthStateChanged((user) => {
+        // userの値が存在していたら、currenUserオブジェクトの値をuser.valueにする
+        if (user) {
+          currentUser.value = auth.currentUser;
+        } else {
+          currentUser.value = null;
+        }
+      });
+    });
+
+    const handleSignOut = async () => {
+      await signOut(auth);
+      router.push("/");
+    };
+    return { handleSignOut, onAuthStateChanged }
+  }
 }
 </script>
 

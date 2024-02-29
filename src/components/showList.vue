@@ -2,9 +2,9 @@
   <h2>レビュー一覧</h2>
   <div>
     <ul class="review-lists"> 
-      <li class="review-list">
-        <p class="review-title">タイトル</p>
-        <p>感想</p>
+      <li class="review-list" v-for="book in books" :key="book.id">
+        <p class="review-title">{{ book.title }}</p>
+        <p>{{ book.review }}</p>
       </li>
     </ul>
   </div>
@@ -13,6 +13,9 @@
 <script>
 export default {
   name: 'ShowList',
+  props: {
+    books: Array
+  }
 }
 </script>
 

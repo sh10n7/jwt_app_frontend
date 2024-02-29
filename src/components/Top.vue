@@ -15,17 +15,17 @@
       </div>
       <input type="submit" value="送信">
     </form>
-    <showList />
+    <ShowList />
   </div>
 </template>
 
 <script>
-import showList from './showList.vue';
+import ShowList from './ShowList.vue';
 
 export default {
   name: 'TopComp',
   components: {
-    showList
+    ShowList
   },
 }
 </script>

@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'showList',
+  name: 'ShowList',
 }
 </script>
 
